@@ -1,0 +1,28 @@
+
+Assignment : school app
+
+3 roles:
+  Student(who enter info)
+  Reviewer (who review data)
+  Approver(who approve candidate)
+  
+  
+  3-different login
+
+1) Fields (10) -when student login, they can enter data and that can be catched in table or excel.
+  Name, age, gender, marks
+  
+  2) Any candidate gave less than 50 marks should be rejected - (Role-Reviewer)
+     Rejection marked in front of student name
+	 
+	 when reviwer login they can see student data in tabular format.
+	 
+	3) reviewer can comments & fileds for reviewer
+   4)reviewer can have 3 options
+        Approve, reject & Hold(comments and review)
+		
+	5)if reviewer approve, it sends to final approve
+          who can select or reject candidate	
+--------------------------------------------------------------------------------	
+
+
