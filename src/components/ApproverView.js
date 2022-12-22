@@ -7,7 +7,7 @@ import {
   doc,
 } from "firebase/firestore";
 
-export const ReviewerView = () => {
+export const ApproverView = () => {
   const [students, setStudents] = useState([]);
   const db = getFirestore();
   useEffect(() => {
@@ -35,7 +35,6 @@ export const ReviewerView = () => {
       fetchData();
     });
   };
-  
   return (
     <>
       <div className="h-screen flex justify-center  pt-10">
@@ -62,16 +61,16 @@ export const ReviewerView = () => {
                     <td className="border px-4 py-2">{student.gender}</td>
                     <td className="border px-4 py-2">{student.marks}</td>
                     <td className="border px-4 py-2">{student.status}</td>
-                    {student.marks > 50 && student.status == "pending" && (
+                    {student.status == "approved" && (
                       <td className="px-4 py-2">
                         <ul>
                           <button
                             onClick={(e) =>
-                              updateStudentStatus(student, "approved")
+                              updateStudentStatus(student, "selected")
                             }
                             className="float-left mx-2 border-2 px-2 rounded-md bg-green-500 border-green-500 text-white"
                           >
-                            Approve
+                            Select
                           </button>
                           <button
                             onClick={(e) =>

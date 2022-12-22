@@ -2,6 +2,8 @@ import { useState } from "react";
 import { LoginComponent } from "./components/LoginComponent";
 import { StudentForm } from "./components/StudentForm";
 import { ReviewerView } from "./components/ReviewerView";
+import { ApproverView } from "./components/ApproverView";
+import { firebaseDB } from "./api/firebase_config";
 import "./App.css";
 
 function App() {
@@ -13,14 +15,23 @@ function App() {
   };
   return (
     <div className="App h-screen">
-      {console.log(userRole)}
+      <header>
+        {isUserLogged && (
+          <p
+            className="text-right px-10 underline cursor-pointer"
+            onClick={() => setIsUserLogged(false)}
+          >
+            Logout
+          </p>
+        )}
+      </header>
       {!isUserLogged ? (
         <LoginComponent handleUserLogin={handleUserLogin} />
       ) : (
         <>
-          {userRole == "student" && <StudentForm />}
-          {userRole == "reviewer" && <ReviewerView />}
-          {userRole == "approver" && <ReviewerView />}
+          {userRole === "student" && <StudentForm />}
+          {userRole === "reviewer" && <ReviewerView />}
+          {userRole === "approver" && <ApproverView />}
         </>
       )}
     </div>

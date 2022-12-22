@@ -1,13 +1,33 @@
 import React, { useState } from "react";
+import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore";
 
 export const LoginComponent = (props) => {
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
+  const db = getFirestore();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log(username, password);
-    props.handleUserLogin({role:'reviewer'})
+    let docs = await getDocs(collection(db, "user"));
+    let userObj = null;
+    docs.forEach((doc) => {
+      let u = doc.data();
+      if (u.username == username) {
+        userObj = { ...u, id: doc.id };
+      }
+    });
+    if (userObj) {
+      props.handleUserLogin({ role: userObj.role || "student" });
+    } else {
+      addDoc(collection(db, "user"), {
+        username,
+        password,
+        role: "student",
+      }).then((res) => {
+        props.handleUserLogin({ role: "student" });
+      });
+    }
   };
 
   return (
