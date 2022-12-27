@@ -28,6 +28,7 @@ export const StudentForm = (props) => {
                 First Name
               </label>
               <input
+                required
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name"
                 type="text"
@@ -45,6 +46,7 @@ export const StudentForm = (props) => {
                 Last Name
               </label>
               <input
+              required
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-last-name"
                 type="text"
@@ -64,6 +66,7 @@ export const StudentForm = (props) => {
                 Age
               </label>
               <input
+              required
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-city"
                 type="text"
@@ -82,6 +85,7 @@ export const StudentForm = (props) => {
               </label>
               <div className="relative">
                 <select
+                required
                   className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-state"
                   onChange={(e) =>
@@ -110,6 +114,7 @@ export const StudentForm = (props) => {
                 Marks
               </label>
               <input
+              required
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-zip"
                 type="text"

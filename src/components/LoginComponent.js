@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { collection, addDoc, getDocs, getFirestore } from "firebase/firestore";
 
+
 export const LoginComponent = (props) => {
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,33 +14,41 @@ export const LoginComponent = (props) => {
     let userObj = null;
     docs.forEach((doc) => {
       let u = doc.data();
-      if (u.username == username) {
+      if (u.username == username && u.password==password)  {
         userObj = { ...u, id: doc.id };
       }
+      
     });
     if (userObj) {
       props.handleUserLogin({ role: userObj.role || "student" });
-    } else {
-      addDoc(collection(db, "user"), {
-        username,
-        password,
-        role: "student",
-      }).then((res) => {
-        props.handleUserLogin({ role: "student" });
-      });
     }
+      // else {
+    //   addDoc(collection(db, "user"), {
+    //     username,
+    //     password,
+    //     role: "student",
+    //   }).then((res) => {
+    //     props.handleUserLogin({ role: "student" });
+    //   });
+    // }
   };
 
   return (
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    
+    <div
+    style={{ backgroundImage: "url(/m.jpg)"}} 
+    className="login-background flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
+        <div >
+         
+</div>
           <img
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="mt-6 text-center text-white text-3xl font-bold tracking-tight">
             Sign in to your account
           </h2>
         </div>
